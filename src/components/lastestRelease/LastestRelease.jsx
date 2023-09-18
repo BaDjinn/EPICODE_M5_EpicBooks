@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import MyCard from "../card/MyCard";
 import { nanoid } from "nanoid";
+import { Library } from "../../contexts/BooksContext";
+import MySpinner from "../spinner/MySpinner";
 
-
-const LastestRelease = ({books})=>{
+const LastestRelease = ()=>{
+  const {books, loading, errors} = useContext(Library)
   return (
     <Container>
       <Row>
-        {books &&
+        {loading && <MySpinner />}
+        {books && !loading && !errors &&
           books.map((book) => {
             return (
               <Col key={nanoid()} xs={12} sm={6} md={3}>
