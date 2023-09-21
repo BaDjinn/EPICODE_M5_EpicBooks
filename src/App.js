@@ -5,32 +5,27 @@ import MySpinner from "./components/spinner/MySpinner";
 import { navLinks } from "./data/navLinks";
 import LastestRelease from "./components/lastestRelease/LastestRelease";
 import PostContext from "./contexts/BooksContext";
-import { BrowserRouter,Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/pages/Home";
 import ErrorPage from "./components/pages/ErrorPage";
 
 export const App = () => {
+	return (
+		/*<PostContext>
+			<MyNav links={navLinks} />
+			<LastestRelease />
+		</PostContext>*/
+		<BrowserRouter>
+			<Routes>
+				<Route exact path="/" element={<Home />} />
 
-  return (
-    /*<PostContext>
-      <MyNav links={navLinks} />
-      <LastestRelease />
-    </PostContext>*/
-    <BrowserRouter>
-      <Routes>
-        <Route exact path="/" element={<Home />}/>
-
-        <Route path="/book/:bookId"/>
-        <Route />
-
-      </Routes>
-    </BrowserRouter>
-    
-    
-  );
-
-}
-export default App
+				<Route path="/book/:bookId" />
+				<Route />
+			</Routes>
+		</BrowserRouter>
+	);
+};
+export default App;
 
 /* export default class App extends Component {
   constructor(props) {
